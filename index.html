@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- SEO -->
+  <title>Ojota | Gestión de Meta Ads para pymes que quieren crecer</title>
+  <meta name="description" content="Gestión mensual de Meta Ads, CRM y estrategia para pymes y dueños de negocios con ticket alto. Hacé crecer tu negocio, no solo tus redes." />
+  <meta name="theme-color" content="#16211F" />
+  <link rel="icon" type="image/png" href="img/logoFaviCon.png" />
+
+  <!-- Open Graph (imagen de 1200 x 630 px: crearla y guardarla como post/og-1200x630.jpg) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:title" content="Ojota | Gestión de Meta Ads para pymes que quieren crecer" />
+  <meta property="og:description" content="Gestión mensual de Meta Ads, CRM y estrategia para pymes y dueños de negocios con ticket alto. Hacé crecer tu negocio, no solo tus redes." />
+  <meta property="og:image" content="post/og-1200x630.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* Paleta Ojota: lavanda #D3C7FF, naranja #FF3B00, verde petróleo #2D4947 */
+      --green: #2D4947;
+      --green-dark: #1F3533;
+      --night: #16211F;
+      --lav: #D3C7FF;
+      --lav-soft: #EEE9FF;
+      --orange: #FF3B00;
+      --orange-dark: #D92F00;
+      --orange-text: #B02500;
+      --ink: #1B2B29;
+      --ink-soft: #55645F;
+      --paper: #FBF9FF;
+      --line: #DDD6F5;
+      --violet: #8B78E6;
+      --radius: 20px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      color: var(--ink); background: var(--paper); line-height: 1.6;
+    }
+    h1, h2, h3 { font-family: "Inter Tight", "Inter", sans-serif; line-height: 1.12; letter-spacing: -0.03em; font-weight: 800; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ul, ol { list-style: none; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    section { padding: 72px 0; }
+    :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+    /* Botones (mínimo 44 px de alto) */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; text-align: center;
+      min-height: 52px; padding: 14px 28px; border-radius: 999px; border: 2px solid var(--green);
+      background: var(--green); color: #fff; font: inherit; font-weight: 700; cursor: pointer;
+      box-shadow: 0 10px 28px rgba(22,33,31,.22);
+      transition: background .2s, color .2s, border-color .2s, transform .2s;
+    }
+    .btn:hover { background: var(--orange); border-color: var(--orange); color: #141414; transform: translateY(-2px); }
+    .btn.orange, .btn.orange:hover {
+      background: linear-gradient(135deg, #FF3B00 0%, #FF7A4D 100%);
+      border-color: transparent; color: #141414; box-shadow: 0 8px 20px rgba(255,59,0,.28);
+    }
+    .btn.orange:hover { filter: brightness(1.06); }
+    .btn.ghost { background: transparent; border-color: rgba(45,73,71,.45); color: var(--green); box-shadow: none; }
+    .btn.ghost:hover { background: var(--green); border-color: var(--green); color: #fff; }
+
+    /* Header (barra oscura fija) */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(22,33,31,.96); backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; padding: 0 24px; }
+    .logo { display: flex; align-items: center; gap: 10px; color: #fff; font-family: "Inter Tight", sans-serif; font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em; }
+    .logo img { width: 36px; height: 36px; padding: 4px; background: #fff; border-radius: 10px; object-fit: contain; }
+    .menu { display: flex; align-items: center; gap: 26px; }
+    .menu a:not(.btn) { color: rgba(255,255,255,.78); font-size: .95rem; font-weight: 500; }
+    .menu a:not(.btn):hover { color: #fff; }
+    .menu .btn { min-height: 44px; padding: 8px 20px; font-size: .95rem; }
+    .burger { display: none; width: 44px; height: 44px; background: none; border: 0; font-size: 1.6rem; cursor: pointer; color: #fff; }
+
+    /* 1. Hero */
+    .hero {
+      padding: 56px 0 72px;
+      background:
+        radial-gradient(560px 340px at 0% 0%, rgba(211,199,255,.6), transparent 70%),
+        radial-gradient(460px 320px at 100% 100%, rgba(255,59,0,.08), transparent 70%),
+        #fff;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+    .hero h1 { font-size: clamp(2.1rem, 4.4vw, 3.4rem); font-weight: 900; color: var(--night); line-height: 1.18; }
+    .hero h1 mark {
+      /* Marcador que cubre las letras, con altura fija para no tocar las otras líneas */
+      background: linear-gradient(rgba(211,199,255,.9), rgba(211,199,255,.9)) no-repeat 0 56% / 100% .98em;
+      color: #F03500; padding: 0 .08em; border-radius: 0;
+      -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    }
+    .hero p.lead { margin: 18px 0 28px; font-size: 1.1rem; color: #4E5B58; max-width: 44ch; }
+    .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .photo { width: 100%; max-width: 380px; margin-left: auto; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; box-shadow: 0 28px 72px rgba(22,33,31,.22); background: var(--lav-soft); }
+    .photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* 2. Posicionamiento (franja) */
+    .position { padding: 64px 0; background: linear-gradient(135deg, #D3C7FF 0%, #E8E1FF 100%); }
+    .position h2 { font-size: clamp(1.9rem, 4.4vw, 3.1rem); color: var(--night); max-width: 20ch; }
+    .position p { margin-top: 18px; max-width: 62ch; font-size: 1.1rem; color: #33413E; }
+
+    /* Títulos de sección */
+    .head { max-width: 680px; margin-bottom: 40px; }
+    .head h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); color: var(--night); }
+    .head p { margin-top: 14px; color: var(--ink-soft); font-size: 1.05rem; }
+
+    /* 3. Servicio */
+    .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .card {
+      padding: 28px; border-radius: 24px; border: 1px solid rgba(45,73,71,.1);
+      background: linear-gradient(160deg, rgba(255,255,255,.95), rgba(255,255,255,.6));
+      box-shadow: 0 20px 56px rgba(22,33,31,.08), inset 0 1px 0 rgba(255,255,255,.8);
+    }
+    .card h3 { font-size: 1.1rem; margin-bottom: 8px; letter-spacing: -.01em; color: var(--night); }
+    .card p { color: var(--ink-soft); font-size: .98rem; }
+    .ideal {
+      margin-top: 28px; padding: 34px; border-radius: 26px; color: #fff;
+      background: radial-gradient(420px 260px at 100% 0%, rgba(211,199,255,.16), transparent 70%), #1A2D2B;
+      display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center;
+    }
+    .ideal h3 { font-size: 1.35rem; margin-bottom: 12px; }
+    .ideal li { padding-left: 26px; position: relative; color: rgba(255,255,255,.88); margin-top: 6px; }
+    .ideal li::before { content: "✓"; position: absolute; left: 0; color: var(--lav); font-weight: 800; }
+
+    /* 4. Suscripción */
+    .sub-sec { background: #EEECF4; }
+    .badge {
+      display: inline-block; margin-bottom: 16px; padding: 6px 14px; border-radius: 999px;
+      background: rgba(255,59,0,.12); color: var(--orange-text); border: 1px solid rgba(255,59,0,.3);
+      font-weight: 700; font-size: .9rem;
+    }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .mod {
+      padding: 22px; border-radius: 20px; border: 1px solid rgba(139,120,230,.35);
+      background: linear-gradient(160deg, rgba(211,199,255,.4), rgba(255,255,255,.7));
+    }
+    .mod h3 { font-size: 1.05rem; margin-bottom: 6px; color: var(--night); }
+    .mod p { font-size: .95rem; color: var(--ink-soft); }
+    .closing {
+      margin-top: 32px; padding: 28px 32px; border-radius: 24px; background: #fff;
+      border: 1px solid rgba(45,73,71,.1); box-shadow: 0 20px 56px rgba(22,33,31,.08);
+    }
+    .closing p { margin-bottom: 18px; font-size: 1.1rem; max-width: 56ch; }
+
+    /* 5. Mi historia */
+    .story { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: center; }
+    .story h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 20px; color: var(--night); }
+    .story p { margin-bottom: 14px; max-width: 60ch; }
+    .story .photo { margin: 0; }
+
+    /* 6. Método */
+    .method { background: radial-gradient(520px 320px at 92% 0%, rgba(211,199,255,.16), transparent 70%), #1A2D2B; color: #fff; }
+    .method .head h2 { color: #fff; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: paso; }
+    .steps li {
+      counter-increment: paso; padding: 26px 22px; border-radius: 22px;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+    }
+    .steps li::before {
+      content: counter(paso); display: grid; place-items: center; width: 40px; height: 40px; margin-bottom: 16px;
+      border-radius: 50%; background: var(--lav); color: var(--night); font-weight: 800;
+    }
+    .steps strong { display: block; font-family: "Inter Tight", sans-serif; font-size: 1.15rem; margin-bottom: 6px; }
+    .steps span { color: rgba(255,255,255,.76); font-size: .96rem; }
+
+    /* Instagram (tu carrusel) */
+    :root { --bg: #EEECF4; --accent: #2D4947; --arrow-bg: rgba(255,255,255,.9); --arrow-fg: #333; --gap: 28px; --item-h: 190px; }
+    .ig-feed { background: var(--bg); padding: 56px 0; text-align: center; }
+    .ig-feed__title { display: inline-block; margin: 0 0 28px; font-size: 26px; font-weight: 700; color: var(--accent); }
+    .ig-feed__title:hover { text-decoration: underline; }
+    .ig-feed__viewport { position: relative; }
+    .ig-feed__track { display: flex; gap: var(--gap); overflow-x: auto; scroll-snap-type: x proximity; scroll-behavior: smooth; scrollbar-width: none; padding: 18px 24px; }
+    .ig-feed__track::-webkit-scrollbar { display: none; }
+    .ig-feed__item { flex: 0 0 auto; height: var(--item-h); scroll-snap-align: start; display: block; background: rgba(211,199,255,.45); border-radius: 18px; overflow: hidden; aspect-ratio: 4 / 5; }
+    .ig-feed__item img, .ig-feed__item video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ig-feed__arrow {
+      position: absolute; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; border-radius: 50%; border: 0;
+      background: var(--arrow-bg); color: var(--arrow-fg); box-shadow: 0 1px 6px rgba(0,0,0,.2); cursor: pointer; font-size: 20px;
+    }
+    .ig-feed__arrow--prev { left: 14px; }
+    .ig-feed__arrow--next { right: 14px; }
+
+    /* 7. Llamado final */
+    .final { text-align: center; padding: 96px 0; color: #fff; background: linear-gradient(135deg, #0F1917 0%, var(--night) 100%); }
+    .final h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); max-width: 18ch; margin: 0 auto 18px; }
+    .final p { max-width: 54ch; margin: 0 auto 32px; color: rgba(255,255,255,.8); font-size: 1.1rem; }
+    .final .btn { min-height: 58px; padding: 16px 40px; font-size: 1.1rem; }
+
+    /* 8. Pie */
+    footer { background: #0C1513; color: rgba(255,255,255,.72); padding: 36px 0; font-size: .95rem; }
+    footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; }
+    footer .links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+    footer a:hover { color: var(--lav); }
+
+    /* Formulario de lista de espera */
+    dialog { width: min(480px, calc(100% - 32px)); padding: 32px; border: 0; border-radius: 26px; margin: auto; box-shadow: 0 30px 90px rgba(10,16,16,.5); }
+    dialog::backdrop { background: rgba(10,16,16,.6); }
+    dialog h2 { font-size: 1.5rem; margin-bottom: 8px; padding-right: 36px; color: var(--night); }
+    dialog .intro { color: var(--ink-soft); margin-bottom: 22px; }
+    .close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; font-size: 1.5rem; cursor: pointer; color: var(--ink-soft); }
+    .close:hover { background: var(--lav-soft); }
+    .field { margin-bottom: 16px; }
+    .field label { display: block; margin-bottom: 6px; font-weight: 600; font-size: .95rem; }
+    .field input[type="text"], .field input[type="email"], .field input[type="tel"] {
+      width: 100%; min-height: 48px; padding: 12px 14px; border: 2px solid var(--line); border-radius: 12px; font: inherit;
+    }
+    .field input:focus { border-color: var(--green); outline: none; }
+    .check { display: flex; gap: 10px; align-items: flex-start; font-size: .92rem; color: var(--ink-soft); margin: 4px 0 22px; }
+    .check input { width: 22px; height: 22px; margin-top: 2px; accent-color: var(--green); flex: none; }
+    dialog .btn { width: 100%; }
+    .ok { display: none; padding: 20px; border-radius: 14px; background: var(--lav-soft); font-weight: 700; color: var(--green); }
+    .err { display: none; margin-top: 12px; color: #9B1C1C; font-weight: 600; font-size: .92rem; }
+
+   /* Movimiento al pasar el cursor */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card, .mod, .steps li, .ig-feed__item {
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, border-color .35s ease, background-color .35s ease;
+  }
+  .card:hover, .mod:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 26px 54px rgba(45,73,71,.16);
+    border-color: rgba(139,120,230,.6);
+  }
+  .steps li:hover {
+    transform: translateY(-6px);
+    background: rgba(210,197,255,.14);
+    border-color: rgba(210,197,255,.45);
+  }
+  .ig-feed__item:hover, .ig-feed__item:focus-visible {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 22px 44px rgba(22,33,31,.28), 0 0 0 3px rgba(210,197,255,.9);
+  }
+  .ig-feed__item img, .ig-feed__item video { transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .ig-feed__item:hover img, .ig-feed__item:hover video { transform: scale(1.08); }
+}
+
+    /* Movimiento: solo la entrada del hero */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-grid > * { animation: rise .7s ease both; }
+      .hero-grid > *:nth-child(2) { animation-delay: .15s; }
+      @keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .ig-feed__track { scroll-behavior: auto; } .btn { transition: none; } }
+
+    /* Celular y tablet */
+    @media (max-width: 880px) {
+      section { padding: 56px 0; }
+      .nav { padding: 0 20px; }
+      .burger { display: block; }
+      .menu {
+        display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch;
+        gap: 4px; padding: 14px 20px 22px; background: var(--night); border-bottom: 1px solid rgba(255,255,255,.08);
+      }
+      .menu.open { display: flex; }
+      .menu a:not(.btn) { padding: 12px 4px; font-size: 1.05rem; }
+      .menu .btn { margin-top: 8px; }
+      .hero { padding: 40px 0 56px; }
+      .hero-grid, .story, .ideal { grid-template-columns: 1fr; }
+      .hero-grid { gap: 36px; }
+      .hero .actions .btn, .ideal .btn { width: 100%; }
+      .photo { margin: 0 auto; }
+      .grid2 { grid-template-columns: 1fr; }
+      .grid3 { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: 1fr; }
+      .story { gap: 32px; }
+    }
+    @media (max-width: 600px) {
+      :root { --item-h: 150px; --gap: 14px; }
+      .ig-feed__arrow { display: none; }
+    }
+    @media (max-width: 520px) {
+      .grid3 { grid-template-columns: 1fr; }
+      .final .btn { width: 100%; }
+      dialog { padding: 26px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <a href="#inicio" class="logo"><img src="img/logo.png" alt="Ojota">OJOTA Comunicación</a>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">☰</button>
+      <nav class="menu" id="menu" aria-label="Principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#suscripcion">Suscripción</a>
+        <a href="#historia">Mi historia</a>
+        <a href="#metodo">Método</a>
+        <a class="btn orange" data-wa="final" target="_blank" rel="noopener" href="#contacto">Escribime</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. INICIO (HERO) -->
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>No te ayudo a crecer en redes. Te ayudo a <mark>crecer tu negocio.</mark></h1>
+          <p class="lead">Gestión de Meta Ads para pymes que quieren ventas reales, un negocio ordenado y una operación rentable y escalable.</p>
+          <div class="actions">
+            <a class="btn orange" data-wa="hero" target="_blank" rel="noopener" href="#contacto">Quiero hacer crecer mi negocio</a>
+            <a class="btn ghost" href="#suscripcion">Conocer la suscripción</a>
+          </div>
+        </div>
+        <div class="photo">
+          <img src="img/hero.png" alt="Camila, especialista en Meta Ads" width="380" height="475" />
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. POSICIONAMIENTO (franja, sin botones ni ítem de menú) -->
+    <section class="position">
+      <div class="wrap">
+        <h2>Un negocio rentable es más que redes sociales.</h2>
+        <p>Las redes son una herramienta. El crecimiento viene de un conjunto de factores: una oferta clara, un proceso de ventas que funcione, números ordenados y una publicidad que atraiga a los clientes correctos. Trabajo sobre todo eso, no solo sobre los anuncios.</p>
+      </div>
+    </section>
+
+    <!-- 3. GESTIÓN MENSUAL DE META ADS -->
+    <section id="servicios">
+      <div class="wrap">
+        <div class="head">
+          <h2>Gestión mensual de Meta Ads para negocios que quieren escalar</h2>
+          <p>Un acompañamiento continuo, pensado para negocios de ticket alto que cierran sus ventas por WhatsApp. Cada mes medimos, optimizamos y ordenamos para que tu inversión se transforme en clientes y tu negocio crezca en todo sentido.</p>
+        </div>
+
+        <ul class="grid2">
+          <li class="card"><h3>Gestión y monitoreo mensual de campañas</h3><p>seguimiento constante del rendimiento para decidir con datos, no con intuición.</p></li>
+          <li class="card"><h3>Auditoría de perfil</h3><p>revisamos tu presencia actual para que cada punto de contacto genere confianza y convierta.</p></li>
+          <li class="card"><h3>Producción de contenido para anuncios</h3><p>creamos las piezas que mejor funcionan para pauta, porque un buen anuncio define gran parte del resultado.</p></li>
+          <li class="card"><h3>Publicación orgánica del contenido generado</h3><p>el material producido para pauta también trabaja en tu perfil, para que tu marca se vea sólida y coherente.</p></li>
+          <li class="card"><h3>CRM de clientes</h3><p>armamos el sistema para registrar, ordenar y dar seguimiento a cada contacto que llega por WhatsApp, y que ninguna venta se pierda.</p></li>
+          <li class="card"><h3>Mejora continua del negocio</h3><p>cualquier ajuste que mejore la eficiencia de las campañas y la rentabilidad de tu negocio entra en el trabajo.</p></li>
+        </ul>
+
+        <div class="ideal">
+          <div>
+            <h3>Ideal para vos si:</h3>
+            <ul>
+              <li>Sos dueño o dueña de una pyme con un ticket alto.</li>
+              <li>Vendés o cerrás por WhatsApp.</li>
+              <li>Querés crecer con una estrategia y un orden claros, no probar anuncios al azar.</li>
+            </ul>
+          </div>
+          <a class="btn orange" data-wa="servicio" target="_blank" rel="noopener" href="#contacto">Quiero que revisemos mi negocio</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SUSCRIPCIÓN (PRÓXIMAMENTE)
+         FASE 2 (enero): cambiar CONFIG.suscripcionActiva a true en el script para pasar de
+         "Próximamente" y lista de espera a "Suscribirme", y sumar planes y pago. -->
+    <section class="sub-sec" id="suscripcion">
+      <div class="wrap">
+        <div class="head">
+          <span class="badge" id="sub-badge">Próximamente · Enero</span>
+          <h2>Todo lo que un dueño de negocio necesita para crecer, en un solo lugar.</h2>
+          <p>Una suscripción, mensual o anual, donde cada mes comparto información práctica para gestionar tu negocio de forma eficaz y escalarlo. Vas a estar al día con los avances de las redes, sin perder de vista lo que hace rentable a un negocio.</p>
+        </div>
+
+        <ul class="grid3">
+          <li class="mod"><h3>Creatividad</h3><p>Ideas y criterios para crear contenido y anuncios que se destacan.</p></li>
+          <li class="mod"><h3>Ventas</h3><p>Cómo ordenar tu proceso para cerrar más y mejor.</p></li>
+          <li class="mod"><h3>Edición</h3><p>Producción de contenido con calidad profesional.</p></li>
+          <li class="mod"><h3>Investigación de mercado</h3><p>Conocé a tu cliente y a tu competencia para decidir con información.</p></li>
+          <li class="mod"><h3>Oferta</h3><p>Construí una propuesta que se elija y que sea rentable.</p></li>
+          <li class="mod"><h3>Meta Ads</h3><p>Las novedades y las estrategias para invertir mejor.</p></li>
+          <li class="mod"><h3>Facturación</h3><p>Claridad en tus números para crecer con base sólida.</p></li>
+          <li class="mod"><h3>Marketing</h3><p>La estrategia que une todas las piezas.</p></li>
+          <li class="mod"><h3>Mentalidad</h3><p>La forma de pensar que sostiene el crecimiento de un negocio.</p></li>
+        </ul>
+
+        <div class="closing">
+          <p><strong>Un negocio rentable no depende de una sola cosa. Esta suscripción reúne el conjunto.</strong></p>
+          <button class="btn" type="button" id="waitlist-open">Quiero ser de las primeras personas en entrar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. MI HISTORIA -->
+    <section id="historia">
+      <div class="wrap story">
+        <div class="photo">
+          <img src="img/MiHist.png" alt="Camila, especialista en Meta Ads" width="380" height="475" loading="lazy" />
+        </div>
+        <div>
+          <h2>No hablo de redes. Hablo de negocios.</h2>
+          <p>Soy Camila, técnica en publicidad especializada en media paid, y hace 3 años acompaño a pymes a crecer con Meta Ads.</p>
+          <p>Pero antes de todo eso, estuve del otro lado. Crecí y trabajé en los negocios de mis papás, y sé lo que es sostener un negocio: las decisiones que pesan, la presión de que los números cierren, el cansancio de hacerlo todo y la necesidad de que cada peso invertido vuelva.</p>
+          <p>Por eso no te hablo de métricas de vanidad ni de tendencias vacías. Entiendo al dueño del negocio porque lo viví de cerca, y trabajo con esa mirada: que tu negocio se ordene, sea rentable y pueda crecer sin depender de la suerte.</p>
+          <p>Me apasiona vender, aprender y enseñar. Por eso te explico cada decisión y el porqué de cada paso.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CÓMO TRABAJAMOS -->
+    <section class="method" id="metodo">
+      <div class="wrap">
+        <div class="head"><h2>Un método simple para crecer con orden</h2></div>
+        <ol class="steps">
+          <li><strong>Diagnóstico</strong><span>analizamos tu negocio, tu oferta y tu perfil.</span></li>
+          <li><strong>Estrategia</strong><span>definimos qué comunicar, a quién y cómo vender.</span></li>
+          <li><strong>Ejecución</strong><span>creamos el contenido y lanzamos las campañas.</span></li>
+          <li><strong>Medición y escala</strong><span>optimizamos cada mes con datos para crecer de forma sostenida.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- INSTAGRAM (tu carrusel) -->
+    <section class="ig-feed" aria-label="Últimos posts de Instagram">
+      <a class="ig-feed__title" href="https://www.instagram.com/ojotacomunicacionn/" target="_blank" rel="noopener">@ojotacomunicacionn</a>
+      <div class="ig-feed__viewport">
+        <button class="ig-feed__arrow ig-feed__arrow--prev" aria-label="Anterior">&#10094;</button>
+        <div class="ig-feed__track" id="igTrack"></div>
+        <button class="ig-feed__arrow ig-feed__arrow--next" aria-label="Siguiente">&#10095;</button>
+      </div>
+    </section>
+
+    <!-- 7. LLAMADO FINAL -->
+    <section class="final" id="contacto">
+      <div class="wrap">
+        <h2>¿Listo para hacer crecer tu negocio de verdad?</h2>
+        <p>Contame sobre tu negocio y tus objetivos. Evaluamos juntos si podemos trabajar y por dónde empezar.</p>
+        <a class="btn orange" data-wa="final" target="_blank" rel="noopener" href="#contacto">Escribime por WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. PIE DE PÁGINA -->
+  <footer>
+    <div class="wrap">
+      <a href="#inicio" class="logo"><img src="img/logo.png" alt="Ojota">OJOTA Comunicación</a>
+      <div class="links">
+        <a href="https://www.instagram.com/ojotacomunicacionn/" target="_blank" rel="noopener">Instagram</a>
+        <a data-wa="final" href="#contacto" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <span>© <span id="year">2026</span> Ojota. Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <!-- Lista de espera -->
+  <dialog id="waitlist" aria-labelledby="wl-title">
+    <button class="close" type="button" aria-label="Cerrar" id="wl-close">×</button>
+    <h2 id="wl-title">Sumate a la lista de espera</h2>
+    <p class="intro">Dejá tus datos y te avisamos apenas abramos la suscripción en enero.</p>
+    <form id="wl-form" novalidate>
+      <div class="field">
+        <label for="wl-nombre">Nombre</label>
+        <input id="wl-nombre" name="nombre" type="text" autocomplete="name" required />
+      </div>
+      <div class="field">
+        <label for="wl-email">Email</label>
+        <input id="wl-email" name="email" type="email" autocomplete="email" required />
+      </div>
+      <div class="field">
+        <label for="wl-wa">WhatsApp (opcional)</label>
+        <input id="wl-wa" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" />
+      </div>
+      <label class="check">
+        <input id="wl-consent" name="consentimiento" type="checkbox" required />
+        <span>Acepto recibir novedades de la suscripción.</span>
+      </label>
+      <button class="btn" type="submit">Anotarme</button>
+      <p class="err" id="wl-err" role="alert"></p>
+    </form>
+    <p class="ok" id="wl-ok" role="status">¡Listo! Te avisamos apenas abramos la suscripción en enero.</p>
+  </dialog>
+
+  <script>
+    /* ============================================================
+       CONFIGURACIÓN: completar  datos
+       ============================================================ */
+    const CONFIG = {
+      nombre: "Camila",            // cómo te nombran en los mensajes de WhatsApp
+      whatsapp: "",                // con código de país, sin + ni espacios. Ej: 5491112345678
+      metaPixelId: "",             // ID del Meta Pixel
+      ga4Id: "",                   // Ej: G-XXXXXXXXXX
+      formEndpoint: "",            // Destino de la lista de espera (Brevo, Formspree, Apps Script de Google Sheets, etc.)
+      suscripcionActiva: false     // En enero: true para cambiar etiqueta y botón
+    };
+
+    /* ---------- WhatsApp: mensajes prearmados ---------- */
+    const MENSAJES = {
+      hero:     `Hola ${CONFIG.nombre}, vi tu web y quiero hacer crecer mi negocio. ¿Podemos hablar?`,
+      servicio: `Hola ${CONFIG.nombre}, me interesa la gestión mensual de Meta Ads para mi negocio.`,
+      final:    `Hola ${CONFIG.nombre}, quiero contarte sobre mi negocio y mis objetivos.`
+    };
+    document.querySelectorAll("[data-wa]").forEach(a => {
+      const clave = a.dataset.wa;
+      if (CONFIG.whatsapp) {
+        a.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(MENSAJES[clave])}`;
+      } else {
+        console.warn("Falta completar CONFIG.whatsapp");
+      }
+      const ubicacion = a.closest("header") ? "menu" : a.closest("footer") ? "pie" : clave;
+      a.addEventListener("click", () => track("Contact", "whatsapp_click", { ubicacion }));
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* ---------- Seguimiento: Meta Pixel + Google Analytics 4 ---------- */
+    function track(eventoMeta, eventoGA, datos) {
+      if (window.fbq) fbq("track", eventoMeta, datos || {});
+      if (window.gtag) gtag("event", eventoGA, datos || {});
+    }
+    (function cargarPixeles() {
+      if (CONFIG.metaPixelId) {
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
+        fbq("init", CONFIG.metaPixelId);
+        fbq("track", "PageView");
+        fbq("track", "ViewContent");
+      }
+      if (CONFIG.ga4Id) {
+        const s = document.createElement("script");
+        s.async = true; s.src = `https://www.googletagmanager.com/gtag/js?id=${CONFIG.ga4Id}`;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function(){ dataLayer.push(arguments); };
+        gtag("js", new Date());
+        gtag("config", CONFIG.ga4Id);
+        gtag("event", "view_content");
+      }
+    })();
+
+    /* ---------- Menú en celular ---------- */
+    const burger = document.querySelector(".burger");
+    const menu = document.getElementById("menu");
+    burger.addEventListener("click", () => {
+      const abierto = menu.classList.toggle("open");
+      burger.setAttribute("aria-expanded", abierto);
+    });
+    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+      menu.classList.remove("open"); burger.setAttribute("aria-expanded", "false");
+    }));
+
+    /* ---------- Suscripción: etiqueta y botón ---------- */
+    const wlBtn = document.getElementById("waitlist-open");
+    if (CONFIG.suscripcionActiva) {
+      document.getElementById("sub-badge").textContent = "Ya disponible";
+      wlBtn.textContent = "Suscribirme";
+      // wlBtn.addEventListener("click", () => location.href = "URL_DEL_CHECKOUT");
+    }
+
+    /* ---------- Formulario de lista de espera ---------- */
+    const dlg = document.getElementById("waitlist");
+    const form = document.getElementById("wl-form");
+    const ok = document.getElementById("wl-ok");
+    const err = document.getElementById("wl-err");
+
+    wlBtn.addEventListener("click", () => {
+      if (CONFIG.suscripcionActiva) return;
+      form.style.display = ""; ok.style.display = "none"; err.style.display = "none";
+      dlg.showModal();
+    });
+    document.getElementById("wl-close").addEventListener("click", () => dlg.close());
+    dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      err.style.display = "none";
+      const datos = Object.fromEntries(new FormData(form));
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(datos.email || "");
+      if (!datos.nombre.trim() || !emailOk || !form.consentimiento.checked) {
+        err.textContent = "Completá tu nombre, un email válido y aceptá recibir novedades.";
+        err.style.display = "block";
+        return;
+      }
+      try {
+        if (CONFIG.formEndpoint) {
+          const r = await fetch(CONFIG.formEndpoint, {
+            method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify(datos)
+          });
+          if (!r.ok) throw new Error("HTTP " + r.status);
+        } else {
+          console.warn("Falta CONFIG.formEndpoint: el envío no se guardó en ningún lado.", datos);
+        }
+        track("CompleteRegistration", "generate_lead", { ubicacion: "lista_de_espera" });
+        form.style.display = "none"; ok.style.display = "block";
+      } catch (ex) {
+        err.textContent = "No pudimos anotarte. Probá de nuevo en un momento o escribime por WhatsApp.";
+        err.style.display = "block";
+      }
+    });
+
+    /* ---------- Carrusel de Instagram ---------- */
+    const posts = [
+      { img: "img/post1.png", link: "https://www.instagram.com/p/DbW-amJjjjL/?img_index=1", alt: "Servicios que cambian tu negocio" },
+      { img: "img/post2.png", link: "https://www.instagram.com/p/DeaZldbDicE/?img_index=1", alt: "Si vas a consumir, que sea de la buena" },
+      { video: "videos/sindromeDelImpostor-liviano.mp4", img: "img/PortadaVideoSindrome.png", link: "https://www.instagram.com/p/Da6LC5nRxaZ/", alt: "¿Cómo superar el síndrome del impostor?" },
+      { img: "img/post3.png", link: "https://www.instagram.com/p/DVs6aCqjkkE/?img_index=1", alt: "Redes sociales para vender" },
+      { img: "img/post4.png", link: "https://www.instagram.com/p/DVlYmfIjsFh/?img_index=1", alt: "No sabes que decir" },
+      { video: "videos/te-mereces-liviano.mp4", img: "img/PortadaVideoTeMereces.png", link: "https://www.instagram.com/p/Da8ZG6WOMhD/", alt: "Te merecés lo que tenés" },
+      { img: "img/post5.png", link: "https://www.instagram.com/p/DVHQcJKkXYH/?img_index=1", alt: "Publicas" },
+      { video: "videos/confianza-liviano.mp4", img: "img/PortadaVideoConfianza.png", link: "https://www.instagram.com/p/DZ5naQcJyL3/", alt: "La confianza se construye" },
+      { img: "img/post6.png", link: "https://www.instagram.com/p/DVbgOKKDufk/?img_index=1", alt: "Formato de contenido" },
+      { img: "img/Post7.png", link: "https://www.instagram.com/p/DSISHI1jvHx/?img_index=1", alt: "La mente de tu cliente" },
+      { video: "videos/creatividad-liviano.mp4", img: "img/PortadaVideoCreatividad.png", link: "https://www.instagram.com/p/DVjCoEOEnfV/", alt: "Busquemos la creatividad por otros lados" },
+      { img: "img/Post8.png", link: "https://www.instagram.com/p/DSDpzwCEaJQ/?img_index=1", alt: "tu esencia que atrae oportunidades" }
+    ];
+
+    const track_ = document.getElementById("igTrack");
+    posts.forEach(p => {
+      const a = document.createElement("a");
+      a.className = "ig-feed__item";
+      a.href = p.link; a.target = "_blank"; a.rel = "noopener";
+
+      if (p.video) {
+        const v = document.createElement("video");
+        v.src = p.video;
+        if (p.img) v.poster = p.img;
+        v.setAttribute("muted", "");
+        v.muted = true; v.loop = true; v.playsInline = true; v.preload = "metadata";
+        v.setAttribute("aria-label", p.alt);
+        v.addEventListener("error", () => console.error("No se pudo cargar el video:", p.video));
+        a.appendChild(v);
+
+        const play = () => v.play().catch(() => {});
+        const stop = () => { v.pause(); v.currentTime = 0; };
+        a.addEventListener("mouseenter", play);
+        a.addEventListener("mouseleave", stop);
+        a.addEventListener("focus", play);
+        a.addEventListener("blur", stop);
+
+        if (window.matchMedia("(hover: none)").matches) {
+          new IntersectionObserver(entries => {
+            entries.forEach(e => e.isIntersecting ? play() : v.pause());
+          }, { threshold: 0.6 }).observe(a);
+        }
+      } else {
+        const img = document.createElement("img");
+        img.src = p.img; img.alt = p.alt; img.loading = "lazy";
+        a.appendChild(img);
+      }
+      track_.appendChild(a);
+    });
+
+    const step = () => track_.clientWidth * 0.8;
+    document.querySelector(".ig-feed__arrow--prev").onclick = () => track_.scrollBy({ left: -step() });
+    document.querySelector(".ig-feed__arrow--next").onclick = () => track_.scrollBy({ left:  step() });
+  </script>
+</body>
+</html>
