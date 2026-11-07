@@ -30,7 +30,7 @@
       --night: #16211F;
       --lav: #D3C7FF;
       --lav-soft: #EEE9FF;
-      --orange: #FF3B00;
+      --orange: #FE3A00;
       --orange-dark: #D92F00;
       --orange-text: #B02500;
       --ink: #1B2B29;
@@ -65,7 +65,7 @@
     }
     .btn:hover { background: var(--orange); border-color: var(--orange); color: #141414; transform: translateY(-2px); }
     .btn.orange, .btn.orange:hover {
-      background: linear-gradient(135deg, #FF3B00 0%, #FF7A4D 100%);
+      background: linear-gradient(135deg, #Fe3a00 0%, #FF7A4D 100%);
       border-color: transparent; color: #141414; box-shadow: 0 8px 20px rgba(255,59,0,.28);
     }
     .btn.orange:hover { filter: brightness(1.06); }
@@ -75,7 +75,7 @@
     /* Header (barra oscura fija) */
     header {
       position: sticky; top: 0; z-index: 50;
-      background: rgba(22,33,31,.96); backdrop-filter: blur(8px);
+      background: #2D4947; backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
     .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; padding: 0 24px; }
@@ -195,13 +195,13 @@
     .ig-feed__arrow--next { right: 14px; }
 
     /* 7. Llamado final */
-    .final { text-align: center; padding: 96px 0; color: #fff; background: linear-gradient(135deg, #0F1917 0%, var(--night) 100%); }
+    .final { text-align: center; padding: 96px 0; color: #fff; background: linear-gradient(135deg, #1F3533  0%, var(--night) 100%); }
     .final h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); max-width: 18ch; margin: 0 auto 18px; }
     .final p { max-width: 54ch; margin: 0 auto 32px; color: rgba(255,255,255,.8); font-size: 1.1rem; }
     .final .btn { min-height: 58px; padding: 16px 40px; font-size: 1.1rem; }
 
     /* 8. Pie */
-    footer { background: #0C1513; color: rgba(255,255,255,.72); padding: 36px 0; font-size: .95rem; }
+    footer { background:#294341; color: rgba(255,255,255,.72); padding: 36px 0; font-size: .95rem; }
     footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; }
     footer .links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
     footer a:hover { color: var(--lav); }
@@ -318,7 +318,7 @@
           </div>
         </div>
         <div class="photo">
-          <img src="img/Hero.png" alt="Camila, especialista en Meta Ads" width="380" height="475" />
+          <img src="img/hero.png" alt="Camila, especialista en Meta Ads" width="380" height="475" />
         </div>
       </div>
     </section>
@@ -561,11 +561,12 @@
     const ok = document.getElementById("wl-ok");
     const err = document.getElementById("wl-err");
 
-    wlBtn.addEventListener("click", () => {
-      if (CONFIG.suscripcionActiva) return;
-      form.style.display = ""; ok.style.display = "none"; err.style.display = "none";
-      dlg.showModal();
-    });
+    const URL_SUSCRIPCION = "https://mymarcaojota.netlify.app/suscribirse.html";
+
+wlBtn.addEventListener("click", () => {
+  track("Lead", "click_suscripcion", { ubicacion: "suscripcion" });
+  window.open(URL_SUSCRIPCION, "_blank", "noopener");
+});
     document.getElementById("wl-close").addEventListener("click", () => dlg.close());
     dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
 
